@@ -9,7 +9,10 @@ Se l’utente ha inserito qualcosa di non valido, segnaliamolo visivamente nel f
 
 */
 
-const listNumbersEl = document.getElementById('list-number');
+const listNumbersEl = document.getElementById('listNumbers');
+const titleGameEl = document.getElementById('titleNumbers');
+const timerEl = document.getElementById('timer');
+const form = document.getElementById('formNumbers');
 const totNumbers = 5;
 const numbers = []; // funzione per generare la lista
 
@@ -33,11 +36,28 @@ for (let i = 0; i < numbers.length; i++) {
 
 
 //Da lì parte un timer di 30 secondi.
+let timerInterval;
+let timeLeft = 30;
 
-//Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente, nell'ordine che preferisce.
+function updateTimer() {
+    timerEl.innerHTML = timeLeft;
+    timeLeft--;
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        timerEl.innerHTML = 'Tempo per memorizzare scaduto!';
+        //Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente, nell'ordine che preferisce.
+        listNumbersEl.classList.add('d-none');
+        form.classList.remove('d - none');
+        titleGameEl.innerHTML = 'Inserisci i numeri che hai visto in precedenza'
+    }
+}
+
+timerInterval = setInterval(updateTimer, 1000);
 
 /* Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 NOTA: non è importante l'ordine con cui l'utente inserisce i numeri, basta che ne indovini il più possibile. */
+
+
 
 /* BONUS:
 Inseriamo la validazione: se l'utente mette due numeri uguali o inserisce cose diverse da numeri lo blocchiamo in qualche modo.
