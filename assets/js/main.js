@@ -10,6 +10,20 @@ Se l’utente ha inserito qualcosa di non valido, segnaliamolo visivamente nel f
 */
 
 //Visualizzare in pagina 5 numeri casuali.
+const listNumbersEl = document.getElementById('list-number');
+let number1El = document.getElementById('number-1');
+let number2El = document.getElementById('number-2');
+let number3El = document.getElementById('number-3');
+let number4El = document.getElementById('number-4');
+let number5El = document.getElementById('number-5');
+
+number1El.innerText = document.writeln(Math.floor(Math.random() * 1000 + 1));
+number2El.innerText = document.writeln(Math.floor(Math.random() * 1000 + 1));
+number3El.innerText = document.writeln(Math.floor(Math.random() * 1000 + 1));
+number4El.innerText = document.writeln(Math.floor(Math.random() * 1000 + 1));
+number5El.innerText = document.writeln(Math.floor(Math.random() * 1000 + 1));
+
+
 
 //Da lì parte un timer di 30 secondi.
 
