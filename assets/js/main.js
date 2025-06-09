@@ -19,11 +19,11 @@ const numberInput2 = document.getElementById('number-2');
 const numberInput3 = document.getElementById('number-3');
 const numberInput4 = document.getElementById('number-4');
 const numberInput5 = document.getElementById('number-5');
-const errorMessageInput = document.getElementById('errorMessage');
+let errorMessageInput = document.getElementById('errorMessage');
 const totNumbers = 5;
-const numbers = []; // funzione per generare la lista
+const numbers = [];
 //Variabili input
-const numbersInput = []; // funzione per generare la lista di numeri dati dagli imput
+const numbersInput = [];
 
 //Visualizzare in pagina 5 numeri casuali.
 function genRandonNum() {
@@ -51,7 +51,7 @@ function updateTimer() {
     timerEl.innerHTML = timeLeft;
 
     timeLeft--;
-    if (timeLeft <= 0) {
+    if (timeLeft == 0) {
         clearInterval(timerInterval);
         timerEl.innerHTML = 'Tempo per memorizzare scaduto!';
         //Dopo 30 secondi i numeri scompaiono e appaiono invece 5 input in cui l'utente deve inserire i numeri che ha visto precedentemente, nell'ordine che preferisce.
@@ -75,12 +75,17 @@ NOTA: non è importante l'ordine con cui l'utente inserisce i numeri, basta che 
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
-    for (let a = 0; a < numbersInput.length; a++) {
-        const thisNumberInput = numbersInput[a];
-        if (thisNumberInput == numbers) {
-            errorMessageInput.innerText = `hai indovinato questo numero: ${thisNumberInput}`;
+    let thisNumberInput = 0;
+    for (let a = 0; a < numbers.length; a++) {
+        if (thisNumberInput == numbers[a]) {
+            thisNumberInput = thisNumberInput + 1;
         }
-        errorMessageInput.innerText = `mi dispiace, il numero: ${thisNumberInput} non è corretto`;
+    }
+    if (thisNumberInput == numbers.length) {
+        errorMessageInput.innerText = `hai indovinato tutti i numeri`;
+    } else {
+        errorMessageInput.innerText = `hai indovinato ${thisNumberInput} numeri, riprova a indovinarli tutti.
+        I numeri da indovinare erano : ${numbers}, quelli che hai inserito ${numbersInput}`;
     }
 }
 )
