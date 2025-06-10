@@ -46,7 +46,7 @@ for (let i = 0; i < numbers.length; i++) {
 
 //Da lì parte un timer di 30 secondi.
 let timerInterval;
-let timeLeft = 1;
+let timeLeft = 29;
 
 function updateTimer() {
     timerEl.innerHTML = timeLeft;
