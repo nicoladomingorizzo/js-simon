@@ -80,7 +80,7 @@ form.addEventListener('submit', function (e) {
     e.preventDefault();
     let matchedNumbersCount = 0;
     for (let a = 0; a < numbersInput.length; a++) {
-        if (numbers.includes(numbersInput[a])) {
+        if (numbersInput.includes(numbers[a])) {
             matchedNumbersCount++;
             console.log(matchedNumbersCount)
         }
